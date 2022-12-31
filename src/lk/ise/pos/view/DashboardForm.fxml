@@ -15,7 +15,7 @@
          </font>
       </Label>
       <Separator layoutX="24.0" layoutY="52.0" prefHeight="5.0" prefWidth="460.0" />
-      <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="602.0" layoutY="23.0" prefHeight="17.0" prefWidth="110.0" text="Date and time" />
+      <Label fx:id="txtDateAndTime" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="461.0" layoutY="23.0" prefHeight="17.0" prefWidth="251.0" text="Date and time" />
       <Button layoutX="758.0" layoutY="18.0" mnemonicParsing="false" onAction="#logoutOnAction" text="Logout" />
       <Button layoutX="14.0" layoutY="116.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="173.0" text="Customer" />
       <Button layoutX="206.0" layoutY="116.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="173.0" text="Item" />
