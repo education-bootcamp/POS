@@ -22,6 +22,7 @@ public class CustomerFormController {
     public TableColumn colAddress;
     public TableColumn colSalary;
     public TableColumn colOption;
+    public Button btn;
 
     public void initialize(){
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -29,6 +30,23 @@ public class CustomerFormController {
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
         colOption.setCellValueFactory(new PropertyValueFactory<>("btn"));
+
+        tbl.getSelectionModel()
+                .selectedItemProperty()
+                .addListener(((observable, oldValue, newValue) -> {
+            if (newValue!=null){
+                setData(newValue);
+            }
+        }));
+
+    }
+
+    private void setData(CustomerTM newValue) {
+        txtId.setText(newValue.getId());
+        txtName.setText(newValue.getName());
+        txtAddress.setText(newValue.getAddress());
+        txtSalary.setText(String.valueOf(newValue.getSalary()));
+        btn.setText("Update Customer");
     }
 
     public void backToHomeOnAction(ActionEvent actionEvent) {

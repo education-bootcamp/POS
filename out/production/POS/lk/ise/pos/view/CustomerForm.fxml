@@ -36,7 +36,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="494.0" layoutY="109.0" mnemonicParsing="false" onAction="#saveCustomer" prefHeight="27.0" prefWidth="138.0" text="Save Customer" />
+      <Button fx:id="btn" layoutX="494.0" layoutY="109.0" mnemonicParsing="false" onAction="#saveCustomer" prefHeight="27.0" prefWidth="138.0" text="Save Customer" />
       <TextField layoutX="14.0" layoutY="109.0" prefHeight="28.0" prefWidth="470.0" promptText="search">
          <font>
             <Font size="14.0" />
