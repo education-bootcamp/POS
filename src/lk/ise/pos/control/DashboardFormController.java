@@ -36,11 +36,31 @@ public class DashboardFormController {
 
 
     public void logoutOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("LoginForm");
+        new Alert(Alert.AlertType.WARNING, "Logged out!").show();
+    }
+
+    public void openCustomerForm(ActionEvent actionEvent) throws IOException {
+        setUi("CustomerForm");
+    }
+
+    public void openItemForm(ActionEvent actionEvent) {
+    }
+
+    public void openOrdersForm(ActionEvent actionEvent) {
+    }
+
+    public void openNewOrderForm(ActionEvent actionEvent) {
+    }
+
+    public void openIncomeForm(ActionEvent actionEvent) {
+    }
+
+    private void setUi(String location) throws IOException {
         Stage stage = (Stage) dashboardContext.getScene().getWindow();
         stage.setScene(
-                new Scene(FXMLLoader.load(getClass().getResource("../view/LoginForm.fxml")))
+                new Scene(FXMLLoader.load(getClass().getResource("../view/"+location+".fxml")))
         );
         stage.centerOnScreen();
-        new Alert(Alert.AlertType.WARNING, "Logged out!").show();
     }
 }

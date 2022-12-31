@@ -17,10 +17,10 @@
       <Separator layoutX="24.0" layoutY="52.0" prefHeight="5.0" prefWidth="460.0" />
       <Label fx:id="txtDateAndTime" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="461.0" layoutY="23.0" prefHeight="17.0" prefWidth="251.0" text="Date and time" />
       <Button layoutX="758.0" layoutY="18.0" mnemonicParsing="false" onAction="#logoutOnAction" text="Logout" />
-      <Button layoutX="14.0" layoutY="116.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="173.0" text="Customer" />
-      <Button layoutX="206.0" layoutY="116.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="173.0" text="Item" />
-      <Button layoutX="448.0" layoutY="116.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="173.0" text="Orders" />
-      <Button layoutX="642.0" layoutY="116.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="173.0" text="New Order" />
-      <Button layoutX="332.0" layoutY="255.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="173.0" text="Income" />
+      <Button layoutX="14.0" layoutY="116.0" mnemonicParsing="false" onAction="#openCustomerForm" prefHeight="125.0" prefWidth="173.0" text="Customer" />
+      <Button layoutX="206.0" layoutY="116.0" mnemonicParsing="false" onAction="#openItemForm" prefHeight="125.0" prefWidth="173.0" text="Item" />
+      <Button layoutX="448.0" layoutY="116.0" mnemonicParsing="false" onAction="#openOrdersForm" prefHeight="125.0" prefWidth="173.0" text="Orders" />
+      <Button layoutX="642.0" layoutY="116.0" mnemonicParsing="false" onAction="#openNewOrderForm" prefHeight="125.0" prefWidth="173.0" text="New Order" />
+      <Button layoutX="332.0" layoutY="255.0" mnemonicParsing="false" onAction="#openIncomeForm" prefHeight="125.0" prefWidth="173.0" text="Income" />
    </children>
 </AnchorPane>

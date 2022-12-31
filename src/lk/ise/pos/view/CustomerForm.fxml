@@ -10,33 +10,33 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="409.0" prefWidth="646.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ise.pos.control.CustomerFormController">
+<AnchorPane fx:id="customerFormContext" prefHeight="409.0" prefWidth="646.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ise.pos.control.CustomerFormController">
    <children>
       <Label layoutX="79.0" layoutY="24.0" text="Customer Form" />
-      <Button layoutX="14.0" layoutY="19.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="14.0" layoutY="19.0" mnemonicParsing="false" onAction="#backToHomeOnAction" text="Back" />
       <Separator layoutX="79.0" layoutY="45.0" prefHeight="1.0" prefWidth="321.0" />
       <Button layoutX="526.0" layoutY="19.0" mnemonicParsing="false" text="+ new Customer" />
-      <TextField layoutX="14.0" layoutY="68.0" prefHeight="28.0" prefWidth="97.0" promptText="Id">
+      <TextField fx:id="txtId" layoutX="14.0" layoutY="68.0" prefHeight="28.0" prefWidth="97.0" promptText="Id">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="122.0" layoutY="68.0" prefHeight="28.0" prefWidth="124.0" promptText="name">
+      <TextField fx:id="txtName" layoutX="122.0" layoutY="68.0" prefHeight="28.0" prefWidth="124.0" promptText="name">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="265.0" layoutY="68.0" prefHeight="28.0" prefWidth="184.0" promptText="address">
+      <TextField fx:id="txtAddress" layoutX="265.0" layoutY="68.0" prefHeight="28.0" prefWidth="184.0" promptText="address">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="458.0" layoutY="68.0" promptText="Salary">
+      <TextField fx:id="txtSalary" layoutX="458.0" layoutY="68.0" promptText="Salary">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="494.0" layoutY="109.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="138.0" text="Save Customer" />
+      <Button layoutX="494.0" layoutY="109.0" mnemonicParsing="false" onAction="#saveCustomer" prefHeight="27.0" prefWidth="138.0" text="Save Customer" />
       <TextField layoutX="14.0" layoutY="109.0" prefHeight="28.0" prefWidth="470.0" promptText="search">
          <font>
             <Font size="14.0" />
