@@ -34,6 +34,7 @@ public class LoginFormController {
                 stage.setScene(
                         new Scene(FXMLLoader.load(getClass().getResource("../view/DashboardForm.fxml")))
                 );
+                stage.centerOnScreen();
 
             }else{
                 System.out.println("Wrong password!");
