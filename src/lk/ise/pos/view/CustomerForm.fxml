@@ -15,7 +15,7 @@
       <Label layoutX="79.0" layoutY="24.0" text="Customer Form" />
       <Button layoutX="14.0" layoutY="19.0" mnemonicParsing="false" onAction="#backToHomeOnAction" text="Back" />
       <Separator layoutX="79.0" layoutY="45.0" prefHeight="1.0" prefWidth="321.0" />
-      <Button layoutX="526.0" layoutY="19.0" mnemonicParsing="false" text="+ new Customer" />
+      <Button layoutX="526.0" layoutY="19.0" mnemonicParsing="false" onAction="#newCustomer" text="+ new Customer" />
       <TextField fx:id="txtId" layoutX="14.0" layoutY="68.0" prefHeight="28.0" prefWidth="97.0" promptText="Id">
          <font>
             <Font size="14.0" />
