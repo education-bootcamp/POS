@@ -24,7 +24,7 @@ public class CustomerFormController {
     public TableColumn colOption;
     public Button btn;
 
-    public void initialize(){
+    public void initialize() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -34,10 +34,10 @@ public class CustomerFormController {
         tbl.getSelectionModel()
                 .selectedItemProperty()
                 .addListener(((observable, oldValue, newValue) -> {
-            if (newValue!=null){
-                setData(newValue);
-            }
-        }));
+                    if (newValue != null) {
+                        setData(newValue);
+                    }
+                }));
 
     }
 
@@ -54,14 +54,31 @@ public class CustomerFormController {
 
     public void saveCustomer(ActionEvent actionEvent) {
         Customer c1 = new Customer(
-                txtId.getText(),txtName.getText(),txtAddress.getText()
-                ,Double.parseDouble(txtSalary.getText())
+                txtId.getText(), txtName.getText(), txtAddress.getText()
+                , Double.parseDouble(txtSalary.getText())
         );
 
-        Database.customers.add(c1);
-        new Alert(Alert.AlertType.INFORMATION, "Customer Saved!").show();
-        loadAll("");
-clearData();
+
+        if (btn.getText().equals("Save Customer")) {
+            Database.customers.add(c1);
+            new Alert(Alert.AlertType.INFORMATION, "Customer Saved!").show();
+            loadAll("");
+        } else {
+            for (Customer c : Database.customers) {
+                if (c.getId().equals(txtId.getText())) {
+                    c.setName(c1.getName());
+                    c.setAddress(c1.getAddress());
+                    c.setSalary(c1.getSalary());
+
+                    new Alert(Alert.AlertType.INFORMATION, "Customer Updated!").show();
+                    loadAll("");
+                    btn.setText("Save Customer");
+                }
+            }
+        }
+
+
+        clearData();
     }
 
     private void clearData() {
@@ -71,12 +88,12 @@ clearData();
         txtSalary.clear();
     }
 
-    private void loadAll(String searchText){
-        ObservableList<CustomerTM> tmList= FXCollections.observableArrayList();
-        for(Customer c:Database.customers){
+    private void loadAll(String searchText) {
+        ObservableList<CustomerTM> tmList = FXCollections.observableArrayList();
+        for (Customer c : Database.customers) {
             Button btn = new Button("Delete");
             CustomerTM tm = new CustomerTM(
-                    c.getId(),c.getName(),c.getAddress(),c.getSalary(),btn
+                    c.getId(), c.getName(), c.getAddress(), c.getSalary(), btn
             );
             tmList.add(tm);
         }
