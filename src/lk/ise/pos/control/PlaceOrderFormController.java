@@ -1,5 +1,6 @@
 package lk.ise.pos.control;
 
+import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -16,6 +17,7 @@ public class PlaceOrderFormController {
     public TextField txtDescription;
     public TextField txtUnitPrice;
     public TextField txtQtyOnHand;
+    public TextField txtRequestQty;
 
     public void initialize(){
         loadCustomerIds();
@@ -71,4 +73,10 @@ public class PlaceOrderFormController {
         }
     }
 
+    public void addToCartOnAction(ActionEvent actionEvent) {
+        double unitPrice = Double.parseDouble(txtUnitPrice.getText());
+        int qty = Integer.parseInt(txtRequestQty.getText());
+        double total=unitPrice*qty;
+
+    }
 }

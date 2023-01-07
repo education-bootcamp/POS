@@ -29,8 +29,8 @@
       <TextField fx:id="txtDescription" disable="true" editable="false" layoutX="178.0" layoutY="142.0" prefHeight="27.0" prefWidth="208.0" promptText="Description" />
       <TextField fx:id="txtUnitPrice" disable="true" editable="false" layoutX="395.0" layoutY="142.0" prefHeight="27.0" prefWidth="150.0" promptText="Unit Price" />
       <TextField fx:id="txtQtyOnHand" disable="true" editable="false" layoutX="552.0" layoutY="142.0" prefHeight="27.0" prefWidth="150.0" promptText="QTY On Hand" />
-      <TextField layoutX="712.0" layoutY="142.0" prefHeight="27.0" prefWidth="127.0" promptText="Request QTY" />
-      <Button layoutX="761.0" layoutY="178.0" mnemonicParsing="false" text="Add to cart" />
+      <TextField fx:id="txtRequestQty" layoutX="712.0" layoutY="142.0" prefHeight="27.0" prefWidth="127.0" promptText="Request QTY" />
+      <Button layoutX="761.0" layoutY="178.0" mnemonicParsing="false" onAction="#addToCartOnAction" text="Add to cart" />
       <Button layoutX="668.0" layoutY="178.0" mnemonicParsing="false" text="Remove Cart" />
       <TableView layoutX="14.0" layoutY="229.0" prefHeight="228.0" prefWidth="824.0">
         <columns>
