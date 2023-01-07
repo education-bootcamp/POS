@@ -11,14 +11,14 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="534.0" prefWidth="853.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ise.pos.control.PlaceOrderFormController">
+<AnchorPane fx:id="context" prefHeight="534.0" prefWidth="853.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ise.pos.control.PlaceOrderFormController">
    <children>
       <Label layoutX="130.0" layoutY="17.0" text="Place Order Form">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button layoutX="14.0" layoutY="13.0" mnemonicParsing="false" text="Back to home" />
+      <Button layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#backToHomeOnAction" text="Back to home" />
       <TextField fx:id="txtCustomerName" disable="true" editable="false" layoutX="178.0" layoutY="78.0" promptText="Name" />
       <ComboBox fx:id="cmbCustomerId" layoutX="14.0" layoutY="78.0" prefWidth="150.0" promptText="Customer id" />
       <Separator layoutX="14.0" layoutY="55.0" prefHeight="0.0" prefWidth="700.0" />
@@ -47,7 +47,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="61.0" layoutY="474.0" text="0.00">
+      <Label fx:id="lblTotal" layoutX="61.0" layoutY="474.0" text="0.00">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

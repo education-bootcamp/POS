@@ -3,14 +3,18 @@ package lk.ise.pos.control;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import lk.ise.pos.db.Database;
 import lk.ise.pos.entity.Customer;
 import lk.ise.pos.view.tm.CustomerTM;
 
 import javax.xml.crypto.Data;
+import java.io.IOException;
 import java.util.Optional;
 
 public class CustomerFormController {
@@ -34,6 +38,8 @@ public class CustomerFormController {
         colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
         colOption.setCellValueFactory(new PropertyValueFactory<>("btn"));
 
+        loadAll("");
+
         tbl.getSelectionModel()
                 .selectedItemProperty()
                 .addListener(((observable, oldValue, newValue) -> {
@@ -52,7 +58,10 @@ public class CustomerFormController {
         btn.setText("Update Customer");
     }
 
-    public void backToHomeOnAction(ActionEvent actionEvent) {
+    public void backToHomeOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage =(Stage) customerFormContext.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader
+                .load(getClass().getResource("../view/DashboardForm.fxml"))));
     }
 
     public void saveCustomer(ActionEvent actionEvent) {
