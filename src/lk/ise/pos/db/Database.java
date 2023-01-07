@@ -20,9 +20,9 @@ public class Database {
         users.add(new User("tom",encryptPassword("1234")));
 
         Item item1 = new Item("D-001","Description 1",25,2500);
-        Item item2 = new Item("D-002","Description 1",34,4355);
-        Item item3 = new Item("D-003","Description 2",20,2234);
-        Item item4 = new Item("D-004","Description 3",30,5854);
+        Item item2 = new Item("D-002","Description 2",34,4355);
+        Item item3 = new Item("D-003","Description 3",20,2234);
+        Item item4 = new Item("D-004","Description 4",30,5854);
 
         items.addAll(
                 Arrays.asList(item1,item2,item3,item4)
