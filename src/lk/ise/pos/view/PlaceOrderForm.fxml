@@ -25,10 +25,10 @@
       <TextField fx:id="txtAddress" disable="true" editable="false" layoutX="346.0" layoutY="78.0" promptText="Address" />
       <TextField fx:id="txtSalary" disable="true" editable="false" layoutX="515.0" layoutY="78.0" promptText="Salary" />
       <Separator layoutX="14.0" layoutY="125.0" prefHeight="0.0" prefWidth="700.0" />
-      <ComboBox layoutX="14.0" layoutY="142.0" prefWidth="150.0" promptText="Item Code" />
-      <TextField disable="true" editable="false" layoutX="178.0" layoutY="142.0" prefHeight="27.0" prefWidth="208.0" promptText="Description" />
-      <TextField disable="true" editable="false" layoutX="395.0" layoutY="142.0" prefHeight="27.0" prefWidth="150.0" promptText="Unit Price" />
-      <TextField disable="true" editable="false" layoutX="552.0" layoutY="142.0" prefHeight="27.0" prefWidth="150.0" promptText="QTY On Hand" />
+      <ComboBox fx:id="cmbItemCode" layoutX="14.0" layoutY="142.0" prefWidth="150.0" promptText="Item Code" />
+      <TextField fx:id="txtDescription" disable="true" editable="false" layoutX="178.0" layoutY="142.0" prefHeight="27.0" prefWidth="208.0" promptText="Description" />
+      <TextField fx:id="txtUnitPrice" disable="true" editable="false" layoutX="395.0" layoutY="142.0" prefHeight="27.0" prefWidth="150.0" promptText="Unit Price" />
+      <TextField fx:id="txtQtyOnHand" disable="true" editable="false" layoutX="552.0" layoutY="142.0" prefHeight="27.0" prefWidth="150.0" promptText="QTY On Hand" />
       <TextField layoutX="712.0" layoutY="142.0" prefHeight="27.0" prefWidth="127.0" promptText="Request QTY" />
       <Button layoutX="761.0" layoutY="178.0" mnemonicParsing="false" text="Add to cart" />
       <Button layoutX="668.0" layoutY="178.0" mnemonicParsing="false" text="Remove Cart" />
