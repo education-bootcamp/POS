@@ -25,7 +25,7 @@ public class Database {
         Item item4 = new Item("D-004","Description 3",30,5854);
 
         items.addAll(
-                Arrays.asList()
+                Arrays.asList(item1,item2,item3,item4)
         );
 
     }
