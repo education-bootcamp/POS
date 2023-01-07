@@ -25,10 +25,13 @@ public class PlaceOrderFormController {
     private void setCustomerData(String id){
         Customer customer =
                 Database.customers.stream().filter(e -> e.getId().equals(id)).findFirst().orElse(null);
-        if (customer!=null){
+        if (customer!=null){ // null!=customer==> fast
             txtCustomerName.setText(customer.getName());
             txtAddress.setText(customer.getAddress());
+            // String x="nimal"==> literal, String a= new String("bandara"); =>
+            // String(literal,dynamic),StringBuilder,StringBuffer// (Threads, String API)
             txtSalary.setText(String.valueOf(customer.getSalary()));
+            txtSalary.setText(customer.getSalary()+"");//
         }else{
             new Alert(Alert.AlertType.WARNING,"Not Found").show();
         }
