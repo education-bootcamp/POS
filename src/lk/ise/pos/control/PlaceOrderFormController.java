@@ -1,12 +1,14 @@
 package lk.ise.pos.control;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ise.pos.db.Database;
 import lk.ise.pos.entity.Customer;
 import lk.ise.pos.entity.Item;
+import lk.ise.pos.view.tm.CartTm;
 
 public class PlaceOrderFormController {
     public TextField txtCustomerName;
@@ -18,10 +20,27 @@ public class PlaceOrderFormController {
     public TextField txtUnitPrice;
     public TextField txtQtyOnHand;
     public TextField txtRequestQty;
+    public TableView<CartTm> tblCart;
+    public TableColumn colItemCode;
+    public TableColumn colDescription;
+    public TableColumn colUnitPrice;
+    public TableColumn colQty;
+    public TableColumn colTotal;
+    public TableColumn colOption;
 
     public void initialize(){
+        //======
+        colItemCode.setCellValueFactory(new PropertyValueFactory<>("code"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+        colOption.setCellValueFactory(new PropertyValueFactory<>("btn"));
+        //======
+
         loadCustomerIds();
         loadItemCodes();
+
 
         cmbCustomerId.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue!=null){
@@ -73,10 +92,17 @@ public class PlaceOrderFormController {
         }
     }
 
+    ObservableList<CartTm> tmList= FXCollections.observableArrayList();
     public void addToCartOnAction(ActionEvent actionEvent) {
         double unitPrice = Double.parseDouble(txtUnitPrice.getText());
         int qty = Integer.parseInt(txtRequestQty.getText());
         double total=unitPrice*qty;
+        Button btn= new Button("Delete");
+        CartTm tm = new CartTm(cmbItemCode.getValue(),
+                txtDescription.getText(),unitPrice,qty,total,btn);
+        tmList.add(tm);
+
+        tblCart.setItems(tmList);
 
     }
 }
