@@ -10,6 +10,8 @@ import lk.ise.pos.entity.Customer;
 import lk.ise.pos.entity.Item;
 import lk.ise.pos.view.tm.CartTm;
 
+import java.util.Optional;
+
 public class PlaceOrderFormController {
     public TextField txtCustomerName;
     public ComboBox<String> cmbCustomerId;
@@ -97,12 +99,31 @@ public class PlaceOrderFormController {
         double unitPrice = Double.parseDouble(txtUnitPrice.getText());
         int qty = Integer.parseInt(txtRequestQty.getText());
         double total=unitPrice*qty;
-        Button btn= new Button("Delete");
-        CartTm tm = new CartTm(cmbItemCode.getValue(),
-                txtDescription.getText(),unitPrice,qty,total,btn);
-        tmList.add(tm);
+
+        if (isExists(cmbItemCode.getValue())){
+            for (CartTm t:tmList
+                 ) {
+                if (t.getCode().equals(cmbItemCode.getValue())){
+                    t.setQty(t.getQty()+qty);
+                    t.setTotal(t.getTotal()+total);
+                    tblCart.refresh();
+                }
+            }
+            // update
+        }else{
+            Button btn= new Button("Delete");
+            CartTm tm = new CartTm(cmbItemCode.getValue(),
+                    txtDescription.getText(),unitPrice,qty,total,btn);
+            tmList.add(tm);
+        }
 
         tblCart.setItems(tmList);
 
+    }
+
+    private boolean isExists(String code){
+        Optional<CartTm> selectedCartTm =
+                tmList.stream().filter(e -> e.getCode().equals(code)).findFirst();
+        return selectedCartTm.isPresent();
     }
 }
