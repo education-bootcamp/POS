@@ -19,11 +19,11 @@
          </font>
       </Label>
       <Button layoutX="14.0" layoutY="13.0" mnemonicParsing="false" text="Back to home" />
-      <TextField disable="true" editable="false" layoutX="178.0" layoutY="78.0" promptText="Name" />
-      <ComboBox layoutX="14.0" layoutY="78.0" prefWidth="150.0" promptText="Customer id" />
+      <TextField fx:id="txtCustomerName" disable="true" editable="false" layoutX="178.0" layoutY="78.0" promptText="Name" />
+      <ComboBox fx:id="cmbCustomerId" layoutX="14.0" layoutY="78.0" prefWidth="150.0" promptText="Customer id" />
       <Separator layoutX="14.0" layoutY="55.0" prefHeight="0.0" prefWidth="700.0" />
-      <TextField disable="true" editable="false" layoutX="346.0" layoutY="78.0" promptText="Address" />
-      <TextField disable="true" editable="false" layoutX="515.0" layoutY="78.0" promptText="Salary" />
+      <TextField fx:id="txtAddress" disable="true" editable="false" layoutX="346.0" layoutY="78.0" promptText="Address" />
+      <TextField fx:id="txtSalary" disable="true" editable="false" layoutX="515.0" layoutY="78.0" promptText="Salary" />
       <Separator layoutX="14.0" layoutY="125.0" prefHeight="0.0" prefWidth="700.0" />
       <ComboBox layoutX="14.0" layoutY="142.0" prefWidth="150.0" promptText="Item Code" />
       <TextField disable="true" editable="false" layoutX="178.0" layoutY="142.0" prefHeight="27.0" prefWidth="208.0" promptText="Description" />
