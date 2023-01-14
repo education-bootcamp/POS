@@ -13,9 +13,13 @@ import javafx.stage.Window;
 import lk.ise.pos.db.Database;
 import lk.ise.pos.entity.Customer;
 import lk.ise.pos.entity.Item;
+import lk.ise.pos.entity.Order;
+import lk.ise.pos.entity.OrderDetails;
 import lk.ise.pos.view.tm.CartTm;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Optional;
 
 public class PlaceOrderFormController {
@@ -161,8 +165,29 @@ public class PlaceOrderFormController {
     }
 
     public void backToHomeOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage =(Stage) context.getScene().getWindow();
+        Stage stage = (Stage) context.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader
                 .load(getClass().getResource("../view/DashboardForm.fxml"))));
+    }
+
+    public void saveOrder(ActionEvent actionEvent) {
+        ArrayList<OrderDetails> products = new ArrayList<>();
+        for (CartTm tm : tmList) {
+            products.add(new OrderDetails(tm.getCode(), tm.getUnitPrice(), tm.getQty()));
+            manageQty(tm.getCode(), tm.getQty());
+        }
+        Order order = new Order("O-1",
+                cmbCustomerId.getValue(), new Date(),
+                Double.parseDouble(lblTotal.getText()), products);
+        Database.orders.add(order);
+    }
+
+    private void manageQty(String code, int qty) {
+        for (Item i : Database.items) {
+            if (i.getCode().equals(code)){
+                i.setQtyOnHand(i.getQtyOnHand()-qty);
+                return;
+            }
+        }
     }
 }
