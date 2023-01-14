@@ -6,12 +6,12 @@ public class OrderTM {
     private String id;
     private String name;
     private double cost;
-    private Date date;
+    private String date;
 
     public OrderTM() {
     }
 
-    public OrderTM(String id, String name, double cost, Date date) {
+    public OrderTM(String id, String name, double cost, String date) {
         this.id = id;
         this.name = name;
         this.cost = cost;
@@ -42,11 +42,11 @@ public class OrderTM {
         this.cost = cost;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }
