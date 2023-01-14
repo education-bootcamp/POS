@@ -47,8 +47,8 @@ public class OrderFormController {
     }
 
     private void loadDetails(String id) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        Parent load = loader.load(getClass().getResource("../view/OrderDetailsForm.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/OrderDetailsForm.fxml"));
+        Parent load = loader.load();
         OrderDetailsFormController controller = loader.getController();
         controller.setOrder(id);
         Stage stage = new Stage();

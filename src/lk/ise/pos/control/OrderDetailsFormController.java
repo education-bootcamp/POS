@@ -1,5 +1,6 @@
 package lk.ise.pos.control;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -11,15 +12,15 @@ import java.text.SimpleDateFormat;
 import java.util.Optional;
 
 public class OrderDetailsFormController {
-    private TextField txtId;
-    private TextField txtName;
-    private TextField txtDate;
-    private TableView<?> tblOrderDetails;
-    private TableColumn<?, ?> colItem;
-    private TableColumn<?, ?> colDescription;
-    private TableColumn<?, ?> colQty;
-    private TableColumn<?, ?> colUnitPrice;
-    private TextField txtCost;
+    public TextField txtId;
+    public TextField txtName;
+    public TextField txtDate;
+    public TableView<?> tblOrderDetails;
+    public TableColumn<?, ?> colItem;
+    public TableColumn<?, ?> colDescription;
+    public TableColumn<?, ?> colQty;
+    public TableColumn<?, ?> colUnitPrice;
+    public TextField txtCost;
 
     public void setOrder(String orderId){
         Optional<Order> order = Database.orders.stream().filter(e -> e.getOrderId().equals(orderId)).findFirst();
