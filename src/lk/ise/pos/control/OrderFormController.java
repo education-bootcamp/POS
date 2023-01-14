@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat;
 
 public class OrderFormController {
     public AnchorPane context;
-    public TableView tblOrders;
+    public TableView<OrderTM> tblOrders;
     public TableColumn colId;
     public TableColumn colName;
     public TableColumn colCost;
@@ -32,6 +32,17 @@ public class OrderFormController {
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
 
         loadData();
+
+        tblOrders.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
+            if (newValue!=null){
+                loadDetails(newValue.getId());
+            }
+        }));
+
+    }
+
+    private void loadDetails(String id) {
+        // load UI
     }
 
     private void loadData() {
