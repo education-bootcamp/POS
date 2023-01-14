@@ -41,6 +41,7 @@ public class PlaceOrderFormController {
     public TableColumn colOption;
     public Label lblTotal;
     public AnchorPane context;
+    public Label lblOrderId;
 
     public void initialize() {
         //======
@@ -54,6 +55,7 @@ public class PlaceOrderFormController {
 
         loadCustomerIds();
         loadItemCodes();
+        loadOrderId();
 
 
         cmbCustomerId.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -67,6 +69,20 @@ public class PlaceOrderFormController {
                 setItemData(newValue);
             }
         });
+
+    }
+
+    private void loadOrderId() {
+        if (Database.orders.size()>0){
+            Order order = Database.orders.get(Database.orders.size() - 1);// [12,23,23] 3-1=2
+            String selectedOrderId= order.getOrderId();
+            String splitId =selectedOrderId.split("[A-Z]")[1];// D1 => [D,1];
+            int i = Integer.parseInt(splitId);
+            i++;
+            lblOrderId.setText("D"+i);
+        }else{
+            lblOrderId.setText("D1");
+        }
 
     }
 
@@ -176,10 +192,16 @@ public class PlaceOrderFormController {
             products.add(new OrderDetails(tm.getCode(), tm.getUnitPrice(), tm.getQty()));
             manageQty(tm.getCode(), tm.getQty());
         }
-        Order order = new Order("O-1",
+        Order order = new Order(lblOrderId.getText(),
                 cmbCustomerId.getValue(), new Date(),
                 Double.parseDouble(lblTotal.getText()), products);
         Database.orders.add(order);
+        new Alert(Alert.AlertType.INFORMATION,"Order Completed").show();
+
+        tmList.clear();
+        tblCart.refresh();
+        lblTotal.setText(String.valueOf(0));
+        loadOrderId();
     }
 
     private void manageQty(String code, int qty) {

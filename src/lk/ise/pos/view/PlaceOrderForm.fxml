@@ -52,5 +52,7 @@
          </font>
       </Label>
       <Button layoutX="756.0" layoutY="470.0" mnemonicParsing="false" onAction="#saveOrder" text="Place Order" />
+      <Label layoutX="731.0" layoutY="18.0" text="Order Id: " />
+      <Label fx:id="lblOrderId" layoutX="788.0" layoutY="18.0" prefHeight="17.0" prefWidth="50.0" />
    </children>
 </AnchorPane>
