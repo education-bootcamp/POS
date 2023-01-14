@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -25,7 +26,7 @@ public class OrderFormController {
     public TableColumn colCost;
     public TableColumn colDate;
 
-    public void initialize(){
+    public void initialize() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colCost.setCellValueFactory(new PropertyValueFactory<>("cost"));
@@ -34,25 +35,35 @@ public class OrderFormController {
         loadData();
 
         tblOrders.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
-            if (newValue!=null){
-                loadDetails(newValue.getId());
+            if (newValue != null) {
+                try {
+                    loadDetails(newValue.getId());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }));
 
     }
 
-    private void loadDetails(String id) {
-        // load UI
+    private void loadDetails(String id) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        Parent load = loader.load(getClass().getResource("../view/OrderDetailsForm.fxml"));
+        OrderDetailsFormController controller = loader.getController();
+        controller.setOrder(id);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(load));
+        stage.centerOnScreen();
     }
 
     private void loadData() {
         ObservableList<OrderTM> obList = FXCollections.observableArrayList();
-        for(Order o : Database.orders){
+        for (Order o : Database.orders) {
             obList.add(
                     new OrderTM(
                             o.getOrderId(),
                             Database.customers.stream()
-                                    .filter(e->e.getId().equals(o.getCustomer()))
+                                    .filter(e -> e.getId().equals(o.getCustomer()))
                                     .findFirst().get().getName(),
                             o.getTotal(),
                             new SimpleDateFormat("yyyy-MM-dd").format(o.getDate())
