@@ -7,6 +7,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import lk.ise.pos.db.Database;
 import lk.ise.pos.entity.Order;
+import lk.ise.pos.view.tm.OrderDetailsTM;
 
 import java.text.SimpleDateFormat;
 import java.util.Optional;
@@ -15,12 +16,14 @@ public class OrderDetailsFormController {
     public TextField txtId;
     public TextField txtName;
     public TextField txtDate;
-    public TableView<?> tblOrderDetails;
-    public TableColumn<?, ?> colItem;
-    public TableColumn<?, ?> colDescription;
-    public TableColumn<?, ?> colQty;
-    public TableColumn<?, ?> colUnitPrice;
+    public TableView<OrderDetailsTM> tblOrderDetails;
+    public TableColumn<OrderDetailsTM, String> colItem;
+    public TableColumn<OrderDetailsTM, String> colDescription;
+    public TableColumn<OrderDetailsTM, Integer> colQty;
+    public TableColumn<OrderDetailsTM, Double> colUnitPrice;
     public TextField txtCost;
+
+
 
     public void setOrder(String orderId){
         Optional<Order> order = Database.orders.stream().filter(e -> e.getOrderId().equals(orderId)).findFirst();

@@ -53,6 +53,7 @@ public class OrderFormController {
         controller.setOrder(id);
         Stage stage = new Stage();
         stage.setScene(new Scene(load));
+        stage.show();
         stage.centerOnScreen();
     }
 
